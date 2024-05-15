@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Draw.mySlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Draw"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="210" Width="210" Height="50" MinWidth="210" MinHeight="50">
+    <Grid TouchDown="Grid_TouchDown" TouchMove="Grid_TouchMove">
+        <Rectangle HorizontalAlignment="Center" Height="30" Stroke="#FFBBB4AD" VerticalAlignment="Center" Width="170" RadiusX="6.75" RadiusY="6.75" StrokeThickness="0.5" Fill="#FFE8E4DD" TouchDown="Rectangle_TouchDown" TouchMove="Rectangle_TouchMove" IsHitTestVisible="False"/>
+        <Rectangle x:Name="stick" HorizontalAlignment="Center" Height="4" VerticalAlignment="Center" Width="155" RadiusX="1.812" RadiusY="1.812" IsHitTestVisible="False">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
+                    <GradientStop Color="#FFB5A496" Offset="0"/>
+                    <GradientStop Color="#FFCDC7C2" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse x:Name="grib" HorizontalAlignment="Left" Height="16" Stroke="#FFBBB4AD" VerticalAlignment="Center" Width="16" Fill="#FFCDC7C2" StrokeThickness="0.8" Margin="25,0,0,0" IsHitTestVisible="False"/>
+        <Rectangle x:Name="gribArea" Fill="#00000000" TouchDown="Rectangle_TouchDown_1" TouchMove="Rectangle_TouchMove_1" TouchUp="Rectangle_TouchUp"/>
+    </Grid>
+</UserControl>

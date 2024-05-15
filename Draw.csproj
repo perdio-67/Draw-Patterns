@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assets\Asset 190%404x.png" />
+    <None Remove="assets\Asset 201%404x.png" />
+    <None Remove="assets\Asset 58%404x.png" />
+    <None Remove="assets\Asset 62%404x.png" />
+    <None Remove="assets\Asset 63%404x.png" />
+    <None Remove="colorwheel3.png" />
+    <None Remove="eraser - Copy.png" />
+    <None Remove="eraser.png" />
+    <None Remove="fluid-green.png" />
+    <None Remove="fluid.png" />
+    <None Remove="highlighter.png" />
+    <None Remove="inspiration\Asset 1%404x dark.png" />
+    <None Remove="inspiration\Asset 2%404x dark.png" />
+    <None Remove="inspiration\Asset 3%404x dark.png" />
+    <None Remove="inspiration\Asset 4%404x dark.png" />
+    <None Remove="inspiration\Asset 75%404x.png" />
+    <None Remove="inspiration\Asset 76%404x.png" />
+    <None Remove="inspiration\Asset 77%404x.png" />
+    <None Remove="inspiration\Asset 78%404x.png" />
+    <None Remove="pen.png" />
+    <None Remove="Textures\Mud Wall.png" />
+    <None Remove="Textures\txt21.png" />
+    <None Remove="Textures\txt22.png" />
+    <None Remove="Textures\txt23.png" />
+    <None Remove="tri.jpg" />
+    <None Remove="tri1.png" />
+    <None Remove="tri3.png" />
+    <None Remove="txt.png" />
+    <None Remove="txt4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\Asset 190@4x.png" />
+    <Resource Include="assets\Asset 201@4x.png" />
+    <Resource Include="assets\Asset 58@4x.png" />
+    <Resource Include="assets\Asset 62@4x.png" />
+    <Resource Include="assets\Asset 63@4x.png" />
+    <Resource Include="colorwheel3.png" />
+    <Resource Include="eraser - Copy.png" />
+    <Resource Include="eraser.png" />
+    <Resource Include="fluid-green.png" />
+    <Resource Include="fluid.png" />
+    <Resource Include="highlighter.png" />
+    <Resource Include="inspiration\Asset 1@4x dark.png" />
+    <Resource Include="inspiration\Asset 2@4x dark.png" />
+    <Resource Include="inspiration\Asset 3@4x dark.png" />
+    <Resource Include="inspiration\Asset 4@4x dark.png" />
+    <Resource Include="inspiration\Asset 75@4x.png" />
+    <Resource Include="inspiration\Asset 76@4x.png" />
+    <Resource Include="inspiration\Asset 77@4x.png" />
+    <Resource Include="inspiration\Asset 78@4x.png" />
+    <Resource Include="pen.png" />
+    <Resource Include="Textures\Mud Wall.png" />
+    <Resource Include="Textures\txt21.png" />
+    <Resource Include="Textures\txt22.png" />
+    <Resource Include="Textures\txt23.png" />
+    <Resource Include="tri.jpg" />
+    <Resource Include="tri1.png" />
+    <Resource Include="tri3.png" />
+    <Resource Include="txt4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+    <PackageReference Include="OpenCvSharp4" Version="4.8.0.20230708" />
+    <PackageReference Include="Phidget22.NET" Version="1.17.20231004" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="txt.png" />
+  </ItemGroup>
+
+</Project>

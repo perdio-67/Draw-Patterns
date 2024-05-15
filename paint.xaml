@@ -1,0 +1,180 @@
+﻿<Window x:Class="Draw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Draw"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920
+        " SizeChanged="Window_SizeChanged" Closing="Window_Closing">
+    <Grid>
+        <DockPanel x:Name="topDock" Background="#EFEDE7" LastChildFill="False">
+            <DockPanel x:Name="right" LastChildFill="False" Width="25" DockPanel.Dock="Right" Panel.ZIndex="20" Background="#EFEDE7"/>
+            <DockPanel x:Name="top" LastChildFill="False" DockPanel.Dock="Top" Height="20" Panel.ZIndex="20" Background="#EFEDE7"/>
+            <DockPanel x:Name="bottom" LastChildFill="False" DockPanel.Dock="Bottom" Height="10" Panel.ZIndex="20" Background="#EFEDE7"/>
+            <DockPanel
+                x:Name="mainDock" Panel.ZIndex="1" UseLayoutRounding="False" Width="622" Height="1050" DockPanel.Dock="Right" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid VerticalAlignment="Top">
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Border1}" />
+                    </Grid.OpacityMask>
+                    <Border x:Name="Border1" CornerRadius="15" Background="#F6F9FB" />
+                    <Canvas Width="1000" RenderTransformOrigin="0,0" x:Name="maincanv" Height="6275" Background="#F6F9FB" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" ClipToBounds="True">
+                        <Canvas.LayoutTransform>
+                            <ScaleTransform ScaleY="0.161989" ScaleX="0.163049"/>
+                        </Canvas.LayoutTransform>
+                        <Image x:Name="bkg" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" Width="397" Stretch="UniformToFill" Panel.ZIndex="1"/>
+                        <Image x:Name="txture" Height="300" Panel.ZIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Stretch="UniformToFill"/>
+
+                        <local:TouchControl x:Name="shape_touch1" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Center" Height="600" VerticalAlignment="Top" Width="600" Panel.ZIndex="3"/>
+                        <local:TouchControl x:Name="shape_touch2" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Center" Height="600" VerticalAlignment="Top" Width="600" Panel.ZIndex="3"/>
+                        <local:TouchControl x:Name="shape_touch3" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Center" Height="600" VerticalAlignment="Top" Width="600" Panel.ZIndex="3"/>
+                        <local:TouchControl x:Name="shape_touch4" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Center" Height="600" VerticalAlignment="Top" Width="600" Panel.ZIndex="3"/>
+                        <InkCanvas x:Name="draw_canvas" Background="Transparent" Grid.Column="1" Grid.Row="1" Panel.ZIndex="5" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Height="540" Width="960" Cursor="None" UseCustomCursor="True"/>
+                    </Canvas>
+                </Grid>
+            </DockPanel>
+            <DockPanel x:Name="leftdock" Width="1254" Panel.ZIndex="30" Background="#EFEDE7">
+                <Grid x:Name="tools_grid" DockPanel.Dock="Bottom" Background="#EFEDE7" Height="161">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="35*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label VerticalAlignment="Top" x:Name="selected_Copy" Margin="231,22,0,0" HorizontalAlignment="Left" Content="Opacity"
+          />
+                    <Label VerticalAlignment="Top" x:Name="selected_Copy1" Margin="241,80,0,0" HorizontalAlignment="Left" Content="Blur"
+          />
+                    <Rectangle x:Name="submit_rect" HorizontalAlignment="Left" Height="140" Margin="706,0,0,0" Stroke="#FFCDC6C2" VerticalAlignment="Center" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFF0CC64" TouchDown="submit_rect_TouchDown" TouchUp="submit_rect_TouchUp" TouchLeave="submit_rect_TouchLeave" Grid.Column="1"/>
+                    <Rectangle x:Name="patern_rect" HorizontalAlignment="Left" Height="68" Margin="641,10,0,0" Stroke="#FF6E6B66" VerticalAlignment="Top" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFD7CEC6" TouchDown="patern_rect_TouchDown" Opacity="0.5" Grid.Column="1"/>
+                    <Rectangle HorizontalAlignment="Left" Height="68" Margin="641,82,0,0" Stroke="#FFCDC6C2" VerticalAlignment="Top" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFD7CEC6" Opacity="0.5" Grid.Column="1"/>
+                    <Rectangle x:Name="single_rect" HorizontalAlignment="Left" Height="68" Margin="575,10,0,0" Stroke="#FF6E6B66" VerticalAlignment="Top" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFD7CEC6" TouchDown="single_rect_TouchDown" Opacity="0.5" Grid.Column="1"/>
+                    <Rectangle HorizontalAlignment="Left" Height="68" Margin="575,82,0,0" Stroke="#FFCDC6C2" VerticalAlignment="Top" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFD7CEC6" Opacity="0.5" Grid.Column="1"/>
+                    <Rectangle x:Name="draw_rect" HorizontalAlignment="Left" Height="140" Margin="507,0,0,0" Stroke="#FF6E6B66" VerticalAlignment="Center" Width="60" RadiusX="8.3" RadiusY="8.3" Fill="#FFD7CEC6" TouchDown="Rectangle_TouchDown" Opacity="0.5" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="712,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF7F7F7" IsHitTestVisible="False" Grid.Column="1" FontSize="14"><Run Text="Submit "/><LineBreak/><Run Text="Your"/><LineBreak/><Run Text="Design"/></TextBlock>
+                    <TextBlock x:Name="draw_text" HorizontalAlignment="Left" TextAlignment="Center" Margin="518,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF6E6B66" IsHitTestVisible="False" Grid.Column="1" FontSize="14"><Run Text="Draw"/><LineBreak/><Run Text="Your"/><LineBreak/><Run Text="Shape"/></TextBlock>
+                    <Label Content="Single" HorizontalAlignment="Left" Margin="581,27,0,0" VerticalAlignment="Top" Foreground="#FF6E6B66" IsHitTestVisible="False" Grid.Column="1" FontSize="14"/>
+                    <Label Content="Pattern" HorizontalAlignment="Left" Margin="644,27,0,0" VerticalAlignment="Top" Foreground="#FF6E6B66" IsHitTestVisible="False" Grid.Column="1" FontSize="14"/>
+                    <Rectangle x:Name="submit_rect_Copy" HorizontalAlignment="Left" Height="22" Margin="11,116,0,0" Stroke="#FFCDC6C2" VerticalAlignment="Top" Width="54" RadiusX="8.3" RadiusY="8.3" Fill="#FFF0CC64" TouchDown="submit_rect_TouchDown" TouchUp="submit_rect_TouchUp" TouchLeave="submit_rect_TouchLeave"/>
+                    <Label Content="عربي" HorizontalAlignment="Left" Margin="18,110,0,0" VerticalAlignment="Top" Height="28" Foreground="#FFF7F7F7" FontSize="14"/>
+                    <Grid x:Name="brush_grid" Grid.Column="1" Margin="168,-1,285,0">
+                        <Image x:Name="pen" Margin="102,16,165,96" Source="/pen.png" Opacity="0.5" TouchDown="Image_TouchDown" Width="50" Height="50"/>
+                        <Image x:Name="highligh" Height="50" Width="50" Margin="102,66,165,46" Source="/highlighter.png" Opacity="0.5" TouchDown="Image_TouchDown_1"/>
+                        <Image x:Name="erease" Height="50" Width="50" Margin="102,112,165,0" Source="/eraser.png" Opacity="0.5" TouchDown="Image_TouchDown_2"/>
+                        <Label VerticalAlignment="Top" x:Name="brush_text" Margin="-108,27,0,0" HorizontalAlignment="Left" Content="Brush Size" FontSize="14"
+          />
+                        <Grid x:Name="colorpicker_grid" Width="122" Height="122" Margin="185,20,10,20" Panel.ZIndex="1">
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Border3}" />
+                            </Grid.OpacityMask>
+                            <Border x:Name="Border3" CornerRadius="15" Background="#F6F9FB" Margin="0,9,0,9" IsHitTestVisible="False" />
+                            <Image x:Name="color_picker_image" HorizontalAlignment="Left" Height="122" VerticalAlignment="Center" Width="122" Source="/colorwheel3.png" IsHitTestVisible="False" Stretch="None"/>
+                            <Canvas x:Name="color_picker_canv" Width="122" Height="122" TouchDown="color_picker_canv_TouchDown" TouchMove="color_picker_canv_TouchMove" TouchUp="color_picker_canv_TouchUp" MouseDown="color_picker_canv_MouseDown" MouseMove="color_picker_canv_MouseMove" MouseUp="color_picker_canv_MouseUp" Opacity="0.8" Background="#00B77A7A" ClipToBounds="True">
+                                <Rectangle x:Name="ellipsePixel" Height="12" Canvas.Left="55" Stroke="White" Canvas.Top="55" Width="12" StrokeThickness="0.8" RadiusX="2.483" RadiusY="2.483" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Black" IsHitTestVisible="False"/>
+                            </Canvas>
+                        </Grid>
+                        <local:mySlider x:Name="sl1" HorizontalAlignment="Left" Margin="-43,55,0,57" Width="190" RenderTransformOrigin="0.5,0.5" value_changed="sl1_value_changed">
+                            <local:mySlider.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="-0.349"/>
+                                    <RotateTransform Angle="270"/>
+                                    <TranslateTransform Y="0"/>
+                                </TransformGroup>
+                            </local:mySlider.RenderTransform>
+                        </local:mySlider>
+                    </Grid>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Height="62" Margin="717,20,0,0" VerticalAlignment="Top" Width="38" Source="/assets/Asset 190@4x.png" IsHitTestVisible="False"/>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="537,21,0,0" VerticalAlignment="Top" Width="28" Source="/assets/Asset 58@4x.png" Panel.ZIndex="1" IsHitTestVisible="False"/>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Height="56" Margin="514,19,0,0" VerticalAlignment="Top" Width="42" Source="/assets/Asset 201@4x.png" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-8.695"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="653,98,0,0" VerticalAlignment="Top" Width="38" Source="/assets/Asset 62@4x.png" IsHitTestVisible="False"/>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="586,98,0,0" VerticalAlignment="Top" Width="38" Source="/assets/Asset 63@4x.png" IsHitTestVisible="False"/>
+                    <local:mySlider x:Name="opacity_sl" HorizontalAlignment="Left" Margin="265,14,0,97" Width="190" RenderTransformOrigin="0.5,0.5" value_changed="opacity_sl_value_changed">
+                        <local:mySlider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.349"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform Y="0"/>
+                            </TransformGroup>
+                        </local:mySlider.RenderTransform>
+                    </local:mySlider>
+                    <local:mySlider x:Name="blur_sl" HorizontalAlignment="Left" Margin="265,66,0,45" Width="190" RenderTransformOrigin="0.5,0.5" value_changed="Slider_ValueChanged">
+                        <local:mySlider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.349"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform Y="0"/>
+                            </TransformGroup>
+                        </local:mySlider.RenderTransform>
+                    </local:mySlider>
+                </Grid>
+                <Grid x:Name="menu_grid" Background="#EFEDE7" Height="852" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="223*"/>
+                        <ColumnDefinition Width="627*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle x:Name="color1" Stroke="Black" Margin="190,0,0,358" Fill="#FFF7A2A2" StrokeThickness="0" Width="60" Height="60" TouchDown="color1_TouchDown" Panel.ZIndex="1" RadiusX="8.3" RadiusY="8.3" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Rectangle x:Name="color2" Stroke="Black" Margin="190,0,0,252" Fill="#FF3E6667" StrokeThickness="0" Width="60" Height="60" TouchDown="color2_TouchDown" Panel.ZIndex="1" RadiusX="8.3" RadiusY="8.3" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Rectangle x:Name="color3" Stroke="Black" Margin="190,0,0,158" Fill="#FF2C5BA6" StrokeThickness="0" Width="60" Height="60" TouchDown="color3_TouchDown" Panel.ZIndex="1" RadiusX="8.3" RadiusY="8.3" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="txture1" Height="60" Width="60" Margin="16,0,0,252" Source="/Textures/txt23.png" Opacity="0.5" TouchDown="txture1_TouchDown" Panel.ZIndex="1" Stretch="Fill" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="shape1" Height="60" Width="60" Margin="103,0,0,156" Source="/tri1.png" TouchDown="shape1_TouchDown" Panel.ZIndex="1" Grid.Column="1" Opacity="0.5" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="txture3" Height="60" Width="60" Margin="16,0,0,158" Source="/Textures/txt22.png" TouchDown="texture3_TouchDown" Panel.ZIndex="1" Stretch="Fill" Opacity="0.5" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="txture2" Height="60" Width="60" Margin="16,0,0,358" Source="/Textures/Mud Wall.png" Opacity="0.5" TouchDown="txture2_TouchDown" Panel.ZIndex="1" Stretch="Fill" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="shape3" Height="60" Width="60" Margin="103,0,0,252" Source="/fluid.png" TouchDown="shape3_TouchDown" Panel.ZIndex="1" Grid.Column="1" Opacity="0.5" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="shape4" Height="60" Width="60" Margin="103,0,0,358" Source="/fluid-green.png" TouchDown="shape4_TouchDown" Panel.ZIndex="1" Grid.Column="1" Opacity="0.5" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Rectangle Stroke="#00000000" Margin="133,0,-296,0" RadiusX="15" RadiusY="15" Fill="#F6F9FB" Grid.ColumnSpan="2"/>
+                    <Label Content="Shapes" HorizontalAlignment="Left" Margin="35,151,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF6E6B66" FontSize="14"/>
+                    <Rectangle HorizontalAlignment="Left" Height="91" Margin="19,60,0,0" Stroke="#FFD5CFCA" VerticalAlignment="Top" Width="89" RadiusX="10.1" RadiusY="10.1"/>
+                    <Label Content="Materials" HorizontalAlignment="Left" Margin="29,288,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF6E6B66" FontSize="14"/>
+                    <Rectangle HorizontalAlignment="Left" Height="91" Margin="19,197,0,0" Stroke="#FFD5CFCA" VerticalAlignment="Top" Width="89" RadiusX="10.1" RadiusY="10.1"/>
+                    <Label Content="+" HorizontalAlignment="Left" Margin="53,197,0,0" VerticalAlignment="Top" Foreground="#FFD5CFCA" MouseDown="Label_MouseDown" FontSize="20"/>
+                    <Label Content="+" HorizontalAlignment="Left" Margin="51,60,0,0" VerticalAlignment="Top" Foreground="#FFD5CFCA" TouchDown="Label_TouchDown" FontSize="20"/>
+                    <Rectangle x:Name="insp2" HorizontalAlignment="Left" Height="75" Margin="21,479,0,0" VerticalAlignment="Top" Width="75" RadiusX="10.1" RadiusY="10.1" Panel.ZIndex="5" TouchDown="insp2_TouchDown">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/inspiration/Asset 77@4x.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="25,809,0,0" TextWrapping="Wrap" Foreground="#FF5B5856" FontWeight="Bold" FontSize="14"><Run Text="Source Of"/><LineBreak/><Run Text="Inspiration"/></TextBlock>
+                    <Rectangle x:Name="insp1" HorizontalAlignment="Left" Height="75" Margin="20,355,0,0" VerticalAlignment="Top" Width="75" RadiusX="10.1" RadiusY="10.1" TouchDown="insp1_TouchDown">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/inspiration/Asset 75@4x.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="color4" Stroke="Black" Margin="190,0,0,55" Fill="#FF254805" StrokeThickness="0" Width="60" Height="60" TouchDown="color4_TouchDown" Panel.ZIndex="1" RadiusX="8.3" RadiusY="8.3" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="txture4" Height="60" Width="60" Margin="16,0,0,55" Source="/txt4.png" Opacity="0.5" TouchDown="txture4_TouchDown" Panel.ZIndex="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Image x:Name="shape2" Height="60" Width="60" Margin="103,0,0,55" Source="/tri3.png" Panel.ZIndex="1" Grid.Column="1" Opacity="0.5" TouchDown="shape2_TouchDown" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <WrapPanel Margin="521,33,86,414" Width="108" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <Rectangle x:Name="shape_selection1" Height="50" Stroke="Black" Width="50" Fill="#FF55CC5C" RadiusX="10.7" RadiusY="10.7" Margin="2,2,2,2" TouchDown="Rectangle_TouchDown_1"/>
+                        <Rectangle Height="50" Stroke="Black" Width="50" Fill="#FFE9AFAF" RadiusX="10.7" RadiusY="10.7" Margin="2,2,2,2"/>
+                        <Rectangle Height="50" Stroke="Black" Width="50" Fill="#FF7E3535" RadiusX="10.7" RadiusY="10.7" Margin="2,2,2,2"/>
+                        <Rectangle Height="50" Stroke="Black" Width="50" Fill="#FFCC5555" RadiusX="10.7" RadiusY="10.7" Margin="2,2,2,2"/>
+                    </WrapPanel>
+                    <Rectangle x:Name="insp3" HorizontalAlignment="Left" Height="75" Margin="21,603,0,0" VerticalAlignment="Top" Width="75" RadiusX="10.1" RadiusY="10.1" TouchDown="insp3_TouchDown">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/inspiration/Asset 76@4x.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="insp4" HorizontalAlignment="Left" Height="75" Margin="27,722,0,0" VerticalAlignment="Top" Width="75" RadiusX="10.1" RadiusY="10.1" TouchDown="insp4_TouchDown">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/inspiration/Asset 78@4x.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label Grid.Column="1" Content="Tag: " HorizontalAlignment="Left" Margin="46,203,0,0" VerticalAlignment="Top" Width="30" FontSize="14"/>
+                    <Label x:Name="tag_text" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="81,203,0,0" VerticalAlignment="Top" Width="329" FontSize="14" Height="45"/>
+                </Grid>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
